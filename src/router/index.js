@@ -8,7 +8,7 @@ export default new Router({
   mode: 'history',
   routes: [
     {
-      path: '/goods/:goodsId',
+      path: '/',
       name: 'GoodsList',
       component: GoodsList
     }
