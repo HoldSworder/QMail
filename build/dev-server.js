@@ -23,9 +23,14 @@ const proxyTable = config.dev.proxyTable
 
 const app = express()
 
+//mock假数据配置
 var router = express.Router();
-require('./../mock/goods.json')
-router.get
+var goodsData = require('./../mock/goods.json');
+router.get("/goods",function (req,res,next) {
+  res.json(goodsData)
+})
+app.use(router);
+//end
 
 const compiler = webpack(webpackConfig)
 
