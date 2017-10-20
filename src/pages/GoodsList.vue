@@ -16,7 +16,7 @@
               <dl class="filter-price">
                 <dt>Price:</dt>
                 <dd><a href="javascript:void(0)" :class="{'cur':priceChecked == 'all'}" @click="priceChecked = 'all'">All</a></dd>
-                <dd v-for="(item,index) in priceFilter" @click="priceChecked = index">
+                <dd v-for="(item,index) in priceFilter" @click="setPriceFilter(index)">
                   <a href="javascript:void(0)" :class="{'cur':priceChecked == index}">{{`${item.startPrice} - ${item.endPrice}`}}</a>
                 </dd>
               </dl>
@@ -28,7 +28,7 @@
                 <ul>
                   <li v-for="item in goodList">
                     <div class="pic">
-                      <a href="#"><img :src="`/static/${item.productImg}`" alt=""></a>
+                      <a href="#"><img v-lazy="`/static/${item.productImg}`" alt=""></a>
                     </div>
                     <div class="main">
                       <div class="name">{{item.productName}}</div>
@@ -97,6 +97,11 @@
       closePop() {
         this.filterBy = false;
         this.overLayFlag = false
+      },
+      setPriceFilter(index) {
+        this.priceChecked = index;
+        this.overLayFlag = false;
+        this.filterBy = false;
       }
     },
     mounted() {
