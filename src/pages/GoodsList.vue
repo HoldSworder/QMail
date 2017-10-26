@@ -7,7 +7,7 @@
           <div class="filter-nav">
             <span class="sortby">Sort by:</span>
             <a href="javascript:void(0)" class="default cur">Default</a>
-            <a href="javascript:void(0)" class="price">Price <svg class="icon icon-arrow-short"><use xlink:href="#icon-arrow-short"></use></svg></a>
+            <a href="javascript:void(0)" class="price" @click="sortGoods">Price <svg class="icon icon-arrow-short"><use xlink:href="#icon-arrow-short"></use></svg></a>
             <a href="javascript:void(0)" class="filterby stopPop" @click="showFilterPop()">Filter by</a>
           </div>
           <div class="accessory-result">
@@ -64,6 +64,7 @@
     },
     data() {
       return {
+        sortFlag:true,
         filterBy: false,
         overLayFlag: false,
         goodList: [],
@@ -102,6 +103,9 @@
         this.priceChecked = index;
         this.overLayFlag = false;
         this.filterBy = false;
+      },
+      sortGoods() {
+        this.sortFlag = !this.sortFlag;
       }
     },
     mounted() {
